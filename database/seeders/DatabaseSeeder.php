@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FormularioSeeder::class);
         $this->call(PreguntaSeeder::class);
         $this->call(Formulario_PreguntaSeeder::class);
+        $this->call(UsuariosSeeder::class);
         $this->call(ResenaSeeder::class);
         $this->call(Resena_RespuestaSeeder::class);
     }
