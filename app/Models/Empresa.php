@@ -12,6 +12,6 @@ class Empresa extends Model
 
     public function centros()
     {
-        return $this->belongsToMany(Centro::class);
+        return $this->belongsToMany(Centro::class, 'centro_empresa');
     }
 }

@@ -25,9 +25,12 @@ return new class extends Migration
 
         Schema::create('centro_empresa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('centro_id')->constrained();
-            $table->foreignId('empresa_id')->constrained();
-            $table->timestamps();
+
+            $table->foreignId('centro_id')
+            ->constrained('centros');
+
+            $table->foreignId('empresa_id')
+            ->constrained('empresas');
         });
     }
 
