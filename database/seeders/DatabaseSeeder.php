@@ -23,5 +23,12 @@ class DatabaseSeeder extends Seeder
         $this->call(UsuariosSeeder::class);
         $this->call(ResenaSeeder::class);
         $this->call(Resena_RespuestaSeeder::class);
+        $this->call(UsuariosSeeder::class);
+        // \App\Models\User::factory(10)->create();
+
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
     }
 }
