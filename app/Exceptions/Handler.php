@@ -23,7 +23,7 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
+        $this->reportable(function (Throwable $exception) {
             if(request()->is('api*')){
                 if($exception instanceof ModelNotFoundException || 
                     ($exception instanceof NotFoundHttpException &&

@@ -27,6 +27,7 @@ class FormularioController extends Controller
         $form->descripcion = $request->descripcion;
         $form->tipo = $request->tipo;
         $form->save();
+
         return response()->json($form, 201);
     }
 
@@ -45,6 +46,7 @@ class FormularioController extends Controller
      */
     public function update(Request $request, Formulario $formulario)
     {
+
         $formulario->nombre = $request->nombre;
         $formulario->descripcion = $request->descripcion;
         $formulario->tipo = $request->tipo;
