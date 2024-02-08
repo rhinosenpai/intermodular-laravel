@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CentroController;
 use Illuminate\Support\Facades\Route;
+use Spatie\FlareClient\Api;
 
 /*
 |--------------------------------------------------------------------------
