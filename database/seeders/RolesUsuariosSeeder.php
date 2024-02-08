@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Rol;
-use App\Models\RolesUsuarios;
 use App\Models\Usuario;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\RolesUsuarios;
 
 class RolesUsuariosSeeder extends Seeder
 {
