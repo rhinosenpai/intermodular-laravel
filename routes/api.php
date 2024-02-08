@@ -45,7 +45,5 @@ Route::apiResource('centros', CentroController::class);
 
 
 
-
-//Reseña
 Route::apiResource('resena', ResenaController::class);
 Route::apiResource('respuestas', ResenaRespuestaController::class)->except(['update']);
