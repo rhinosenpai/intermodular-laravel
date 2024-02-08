@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\CentroController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\FormularioController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::get('centros', [CentroController::class, 'index']);
 
-Route::apiResource('formularios', FormularioController::class);
+
