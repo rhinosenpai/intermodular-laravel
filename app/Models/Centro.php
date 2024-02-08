@@ -18,7 +18,4 @@ class Centro extends Model
     public function usuarios() {
         return $this->hasMany(Usuario::class, 'id_centro');
     }
-    public function usuarios() {
-        return $this->hasMany(Usuario::class);
-    }
 }
