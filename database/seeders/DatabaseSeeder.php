@@ -27,7 +27,9 @@ class DatabaseSeeder extends Seeder
             RolesUsuariosSeeder::class,
             CategoriasSeeder::class,
             ServiciosSeeder::class,
-            ServiciosCategoriasSeeder::class
+            ServiciosCategoriasSeeder::class,
+            ResenaSeeder::class,
+            Resena_RespuestaSeeder::class
         ]);
     }
 }
