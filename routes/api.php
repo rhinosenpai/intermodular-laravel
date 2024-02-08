@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ResenaController;
 use App\Http\Controllers\Api\ResenaRespuestaController;
+use App\Http\Controllers\Api\PreguntaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('/centros/{id}', 'App\Http\Controllers\Api\CentroController@show'); /
 Route::post('/centros', 'App\Http\Controllers\Api\CentroController@store'); //crear un registro
 Route::put('/centros/{id}', 'App\Http\Controllers\Api\CentroController@update'); //actualizar un registro
 Route::delete('/centros/{id}', 'App\Http\Controllers\Api\CentroController@destroy'); //eliminar un registro
+Route::apiResource('preguntas', PreguntaController::class);
 
 Route::apiResource('resena', ResenaController::class);
 Route::apiResource('respuestas', ResenaRespuestaController::class)->except(['update']);
