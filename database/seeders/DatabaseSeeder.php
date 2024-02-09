@@ -31,5 +31,6 @@ class DatabaseSeeder extends Seeder
             ResenaSeeder::class,
             Resena_RespuestaSeeder::class
         ]);
+
     }
 }
