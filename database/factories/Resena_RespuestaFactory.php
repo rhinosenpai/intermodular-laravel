@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Resena>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Resena_Respuesta>
  */
-class ResenaFactory extends Factory
+class Resena_RespuestaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class ResenaFactory extends Factory
     public function definition(): array
     {
         return [
-            'formulario_id' => rand(1,2)
+            'valor' => $this->faker->sentence
         ];
     }
 }
