@@ -5,7 +5,10 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Formulario;
+use App\Models\Resena;
+use App\Models\Resena_Respuesta;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
