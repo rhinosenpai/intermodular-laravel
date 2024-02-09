@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Resena;
+use App\Models\Formulario_Pregunta;
 
 class ResenaSeeder extends Seeder
 {
@@ -13,6 +14,10 @@ class ResenaSeeder extends Seeder
      */
     public function run()
     {
-        return Resena::factory()->count(5)->create();
+        $forms = Formulario_Pregunta::distinct('formulario_id')->get();
+        $forms->each(function($form)
+        {
+            Resena::factory()->count(5)->create(['formulario_id' => $form->formulario_id]);
+        });
     }
 }
