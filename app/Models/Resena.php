@@ -16,4 +16,9 @@ class Resena extends Model
     {
         return $this->belongsTo(Formulario_Pregunta::class,'formulario_id');
     }
+
+    public function respuestas()
+    {
+        return $this->hasMany(Resena_Respuesta::class);
+    }
 }

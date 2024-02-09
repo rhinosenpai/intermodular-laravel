@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resena', function(Blueprint $table) {
-            $table->uuid('id')->primary();
+        Schema::create('resena_respuestas', function (Blueprint $table) {
+            $table->id();
+            $table->string('pregunta_id');
+            $table->string('valor');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resena');
+        Schema::dropIfExists('resena__respuestas');
     }
 };
