@@ -17,7 +17,7 @@ class ResenaFactory extends Factory
     public function definition(): array
     {
         return [
-            
+            'formulario_id' => rand(1,2)
         ];
     }
 }
