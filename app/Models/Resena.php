@@ -11,4 +11,9 @@ class Resena extends Model
     use HasFactory, HasUuids;
 
     protected $table = 'resena';
+
+    public function formularios()
+    {
+        return $this->belongsTo(Formulario_Pregunta::class,'formulario_id');
+    }
 }
