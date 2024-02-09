@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pregunta', function(Blueprint $table) {
             $table->id();
             $table->string("titulo");
-            //$table->string("tipo"); ??
+            $table->string("tipo"); //estrellas, text o textarea
             $table->integer("orden");
             $table->timestamps();
         });
