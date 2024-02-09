@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resena', function(Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->timestamps();
+        Schema::table('resena_respuestas', function (Blueprint $table) {
+            $table->foreignUuid('resena_id');
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resena');
+        Schema::table('resena_respuestas', function (Blueprint $table) {
+            //
+        });
     }
 };
