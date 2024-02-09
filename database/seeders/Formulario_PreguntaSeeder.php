@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Formulario_Pregunta;
+use App\Models\Formulario;
 
 class Formulario_PreguntaSeeder extends Seeder
 {
@@ -13,19 +14,21 @@ class Formulario_PreguntaSeeder extends Seeder
      */
     public function run(): void
     {
-        $formulario_pregunta = new Formulario_Pregunta();
-        $formulario_pregunta->formulario_id = 1;
-        $formulario_pregunta->pregunta_id = 1;
-        $formulario_pregunta->save();
+        $preguntasFormAlumno = collect([1,2,3,4,5,6,7,8,9,10,11]);
+        $preguntasFormTutorEmpresa = collect([1,2,3,4,5,6,7,8,9,10,11]);
 
-        $formulario_pregunta2 = new Formulario_Pregunta();
-        $formulario_pregunta2->formulario_id = 1;
-        $formulario_pregunta2->pregunta_id = 2;
-        $formulario_pregunta2->save();
+        $preguntasFormTutorEmpresa->each(function($pregunta) {
+            $formulario_pregunta = new Formulario_Pregunta();
+            $formulario_pregunta->formulario_id = 2;
+            $formulario_pregunta->pregunta_id = $pregunta;
+            $formulario_pregunta->save();
+        });
 
-        $formulario_pregunta3 = new Formulario_Pregunta();
-        $formulario_pregunta3->formulario_id = 1;
-        $formulario_pregunta3->pregunta_id = 3;
-        $formulario_pregunta3->save();
+        $preguntasFormAlumno->each(function($pregunta) {
+            $formulario_pregunta = new Formulario_Pregunta();
+            $formulario_pregunta->formulario_id = 1;
+            $formulario_pregunta->pregunta_id = $pregunta;
+            $formulario_pregunta->save();
+        });
     }
 }

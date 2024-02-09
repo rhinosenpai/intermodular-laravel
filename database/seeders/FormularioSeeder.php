@@ -14,15 +14,15 @@ class FormularioSeeder extends Seeder
     public function run(): void
     {
         $formulario = new Formulario();
-        $formulario->nombre = "nombre1";
-        $formulario->descripcion = "descripcion1";
-        $formulario->tipo = "tipado1";
+        $formulario->nombre = "FormularioAlumnado";
+        $formulario->descripcion = "Formulario para la reseña del alumno hacia la empresa.";
+        $formulario->tipo = "Alumno";
         $formulario->save();
 
         $formulario1 = new Formulario();
-        $formulario1->nombre = "nombre2";
-        $formulario1->descripcion = "descripcion2";
-        $formulario1->tipo = "tipado2";
+        $formulario1->nombre = "FormularioTutorEmpresa";
+        $formulario1->descripcion = "Formulario para la reseña del tutor de la empresa hacia el alumno.";
+        $formulario1->tipo = "Empresa";
         $formulario1->save();
 
         $formulario2 = new Formulario();
