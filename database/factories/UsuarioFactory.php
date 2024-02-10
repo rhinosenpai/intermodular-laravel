@@ -29,9 +29,10 @@ class UsuarioFactory extends Factory
         $rol->tipo = $roles[rand(0, 3)];
         return [
             'name' => fake()->name(),
-            'password' => fake()->word(),
+            'password' => '1234',
             'dni' => fake()->numerify('########'),
             'rol' => $rol,
+            'login' => fake()->unique()->word(),
             'token' => fake()->numerify('#####')
             /*
             'name' => fake()->name(),
