@@ -11,6 +11,6 @@ class Rol extends Model
     protected $table = 'roles';
 
     public function usuarios() {
-        return $this->belongsToMany(Usuario::class);
+        return $this->belongsToMany(Usuario::class, 'roles_usuarios');
     }
 }

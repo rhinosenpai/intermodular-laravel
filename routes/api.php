@@ -3,6 +3,8 @@
 use App\Http\Controllers\Api\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\PreguntaController;
+use App\Http\Controllers\Api\RolesUsuariosController;
 use App\Http\Controllers\Api\UsuarioController;
 
 /*
@@ -30,6 +32,7 @@ Route::delete('/centros/{id}', 'App\Http\Controllers\Api\CentroController@destro
 // Usuarios.
 Route::apiResource('usuarios', UsuarioController::class);
 Route::post('login', [LoginController::class, 'login']);
+Route::apiResource('roles', RolesUsuariosController::class);
 
 
 Route::apiResource('resena', ResenaController::class);
