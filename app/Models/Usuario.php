@@ -21,7 +21,7 @@ class Usuario extends Authenticatable
         return $this->belongsTo(Empresa::class);
     }
     public function roles() {
-        return $this->belongsToMany(Rol::class);
+        return $this->belongsToMany(Rol::class, 'roles_usuarios');
     }
 
     /**

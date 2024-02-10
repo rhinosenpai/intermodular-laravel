@@ -13,7 +13,7 @@ class RolesUsuariosController extends Controller
      */
     public function index()
     {
-
+        return response()->json(RolesUsuarios::get(), 200);
     }
 
     /**

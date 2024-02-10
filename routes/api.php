@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PreguntaController;
+use App\Http\Controllers\Api\RolesUsuariosController;
 use App\Http\Controllers\Api\UsuarioController;
 
 /*
@@ -33,3 +34,4 @@ Route::apiResource('preguntas', PreguntaController::class);
 // Usuarios.
 Route::apiResource('usuarios', UsuarioController::class);
 Route::post('login', [LoginController::class, 'login']);
+Route::apiResource('roles', RolesUsuariosController::class);
