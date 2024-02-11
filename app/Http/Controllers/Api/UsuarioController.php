@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UsuarioResource;
+use App\Models\Rol;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
+    public function __construct() {
+        //$this->middleware(['auth', 'roles:centro']);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return response()->json(Usuario::get(), 200);
+        return UsuarioResource::collection(Usuario::all());
     }
 
     /**
@@ -22,12 +27,25 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $usuario = new Usuario();
-        $usuario->name = $request->name;
-        $usuario->password = $request->password;
-        $usuario->dni = $request->dni;
-        $usuario->token = $request->token;
-        $usuario->save();
-        return response()->json($usuario);
+        $rol = Rol::where('tipo', $request->roles)->first();
+
+        if ($rol) {
+            $usuario->login = $request->login;
+            $usuario->name = $request->name;
+            $usuario->password = $request->password;
+            $usuario->dni = $request->dni;
+            $usuario->telefono = $request->telefono;
+            $usuario->token = $request->token;
+            $usuario->direccion = $request->direccion;
+            $usuario->provincia = $request->provincia;
+            $usuario->poblacion = $request->poblacion;
+            $usuario->email = $request->email;
+            $usuario->save();
+            $usuario->roles()->attach($rol->id);
+            return response()->json($usuario);
+        } else {
+            return response()->json(['error' => 'No es posible añadir el usuario']);
+        }
     }
 
     /**

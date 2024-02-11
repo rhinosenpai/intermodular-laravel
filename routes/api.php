@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PreguntaController;
 use App\Http\Controllers\Api\RolesUsuariosController;
 use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Resources\UsuarioResource;
+use App\Models\Usuario;
 
 /*
 |--------------------------------------------------------------------------

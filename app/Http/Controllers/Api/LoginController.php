@@ -12,10 +12,10 @@ class LoginController extends Controller
 {
     public function login(Request $request) {
         $usuario = Usuario::where('login', $request->login)->first();
-        $roles = $usuario->roles()->get();
         if (!$usuario || !Hash::check($request->password, $usuario->password)) {
             return response()->json(['error' => 'Credenciales no válidas'], 401);
         } else {
+            $roles = $usuario->roles()->pluck('tipo');
             return response()->json([
                 'accessToken' => $usuario->createToken($usuario->login)->plainTextToken,
                 'login' => $usuario->login,
