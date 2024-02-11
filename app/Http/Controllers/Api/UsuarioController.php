@@ -62,8 +62,9 @@ class UsuarioController extends Controller
     public function update(Request $request, Usuario $usuario)
     {
         $usuario->name = $request->name;
-        $usuario->password = $request->password;
         $usuario->dni = $request->dni;
+        $usuario->email = $request->email;
+        $usuario->login = $request->login;
         $usuario->save();
         return response()->json($usuario);
     }
