@@ -21,4 +21,4 @@ Route::get('/', function () {
 
 Route::get('centros', [CentroController::class, 'index']);
 
-Route::apiResource('formularios', FormularioController::class);
+
