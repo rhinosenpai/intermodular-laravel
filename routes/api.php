@@ -4,7 +4,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ResenaController;
 use App\Http\Controllers\Api\ResenaRespuestaController;
-use App\Http\Controllers\Api\PreguntaController;
 
 /*
 |--------------------------------------------------------------------------
