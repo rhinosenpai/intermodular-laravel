@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CentroController;
 use App\Http\Controllers\Api\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,11 +26,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });*/
 
-Route::get('/centros', 'App\Http\Controllers\Api\CentroController@index'); //mostrar todos los registros de centros
-Route::get('/centros/{id}', 'App\Http\Controllers\Api\CentroController@show'); //mostrar un registro especifico
-Route::post('/centros', 'App\Http\Controllers\Api\CentroController@store'); //crear un registro
-Route::put('/centros/{id}', 'App\Http\Controllers\Api\CentroController@update'); //actualizar un registro
-Route::delete('/centros/{id}', 'App\Http\Controllers\Api\CentroController@destroy'); //eliminar un registro
 
 
 Route::get('/empresas', 'App\Http\Controllers\Api\EmpresaController@index');
@@ -40,6 +36,9 @@ Route::get('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@show');
 Route::apiResource('usuarios', UsuarioController::class);
 Route::post('login', [LoginController::class, 'login']);
 Route::apiResource('roles', RolesUsuariosController::class);
+
+// Centros.
+Route::apiResource('centros', CentroController::class);
 
 
 Route::apiResource('resena', ResenaController::class);
