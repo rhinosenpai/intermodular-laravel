@@ -15,7 +15,7 @@ class Usuario extends Authenticatable
     protected $table = 'usuarios';
 
     public function centro() {
-        return $this->belongsTo(Centro::class);
+        return $this->belongsTo(Centro::class, 'id_centro');
     }
     public function empresa() {
         return $this->belongsTo(Empresa::class);

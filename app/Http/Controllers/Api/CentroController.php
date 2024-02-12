@@ -38,18 +38,20 @@ class CentroController extends Controller
         $centro->direccion = $request->direccion;
         $centro->telefono = $request->telefono;
         $centro->poblacion = $request->poblacion;
+        $centro->password = $request->password;
         $centro->provincia = $request->provincia;
 
         $centro->save();
 
         $centroUser = new Usuario();
+        $centroUser->name = $request->nombre;
         $centroUser->login = $request->login;
         $centroUser->password = $request->password;
-        $centroUser->centro()->associate($centro);
+        $centroUser->centro()->associate($centro->id);
+        $centroUser->save();
+
         $rol = Rol::where('tipo', $request->roles)->first();
         $centroUser->roles()->attach($rol->id);
-
-        $centroUser->save();
     }
 
     /**
