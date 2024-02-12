@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\RolesUsuariosController;
 use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Resources\UsuarioResource;
 use App\Models\Usuario;
+use App\Http\Controllers\Api\ResenaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,21 @@ use App\Models\Usuario;
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});*/
+});
+*/
 
-
+/*
+Route::get('/centros', 'App\Http\Controllers\Api\CentroController@index');
+Route::get('/centros/{id}', 'App\Http\Controllers\Api\CentroController@show');
+Route::post('/centros', 'App\Http\Controllers\Api\CentroController@store');
+Route::put('/centros/{id}', 'App\Http\Controllers\Api\CentroController@update');
+Route::delete('/centros/{id}', 'App\Http\Controllers\Api\CentroController@destroy');
+*/
 
 Route::get('/empresas', 'App\Http\Controllers\Api\EmpresaController@index');
 Route::get('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@show');
 
+Route::apiResource('preguntas', PreguntaController::class);
 
 // Usuarios.
 Route::apiResource('usuarios', UsuarioController::class);
