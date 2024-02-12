@@ -15,4 +15,5 @@ class Resena_Respuesta extends Model
     {
         return $this->belongsTo(Resena::class);
     }
+    
 }
