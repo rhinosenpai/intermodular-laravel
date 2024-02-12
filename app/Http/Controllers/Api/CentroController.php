@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Centro;
+use App\Models\Rol;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class CentroController extends Controller
@@ -33,13 +35,21 @@ class CentroController extends Controller
         $centro = new Centro();
         $centro->nombre = $request->nombre;
         $centro->email = $request->email;
-        $centro->password = $request->password;
         $centro->direccion = $request->direccion;
         $centro->telefono = $request->telefono;
         $centro->poblacion = $request->poblacion;
         $centro->provincia = $request->provincia;
 
         $centro->save();
+
+        $centroUser = new Usuario();
+        $centroUser->login = $request->login;
+        $centroUser->password = $request->password;
+        $centroUser->centro()->associate($centro);
+        $rol = Rol::where('tipo', $request->roles)->first();
+        $centroUser->roles()->attach($rol->id);
+
+        $centroUser->save();
     }
 
     /**
