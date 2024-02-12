@@ -11,7 +11,6 @@ use App\Http\Resources\UsuarioResource;
 use App\Models\Usuario;
 use App\Http\Controllers\Api\ResenaController;
 use App\Http\Controllers\Api\ResenaRespuestaController;
-use App\Http\Controllers\Api\PreguntaController;
 
 /*
 |--------------------------------------------------------------------------
