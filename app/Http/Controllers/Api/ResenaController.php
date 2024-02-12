@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Resena;
 use Illuminate\Http\Request;
 use App\Models\Formulario_Pregunta;
+use App\Models\Pregunta;
 
 class ResenaController extends Controller
 {
@@ -24,10 +25,12 @@ class ResenaController extends Controller
      */
     public function store(Request $request)
     {
+        $form = Formulario_Pregunta::findOrFail($request->formulario_id);
         $resena = new Resena();
-        //ERROR NO SE USA ASSOCIATE EN UNA RELACION DE HASMANY SOLO EN BELONGSTO
-        $resena->formularios()->associate(Formulario_Pregunta::findOrFail($request->formulario_id));
+        $resena->formularios()->associate(Formulario_Pregunta::findOrFail($request->formulario_id)->formulario_id);
         $resena->save();
+        
+        
         return response()->json(['id'=>$resena->id], 201);
     }
 
@@ -36,7 +39,14 @@ class ResenaController extends Controller
      */
     public function show(Resena $resena)
     {
-        return response()->json($resena, 200);
+        $preguntas = [];
+        foreach($resena->respuestas as $respuestas){
+            $preguntas[Pregunta::findOrFail($respuestas->pregunta_id)->titulo]= $respuestas->valor;
+        }
+        return response()->json([
+            "id" => $resena->id,
+            "preguntas"=>$preguntas
+        ], 200);
     }
 
     /**
