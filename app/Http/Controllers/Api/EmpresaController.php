@@ -58,7 +58,32 @@ class EmpresaController extends Controller
     public function show(Request $request)
     {
         $empresa = Empresa::findOrFail($request->id);
-        return $empresa;
+
+        $empresaTransformada = [
+            'id' => $empresa->id,
+            'nombre' => $empresa->nombre,
+            'imagen' => $empresa->imagen,
+            'telefono' => $empresa->telefono,
+            'correo' => $empresa->correo,
+            'direccion' => [
+                'calle' => $empresa->direccion_calle,
+                'provincia' => $empresa->direccion_provincia,
+                'localidad' => $empresa->direccion_localidad,
+                'coordenadas' => [
+                    'lat' => +$empresa->direccion_lat,
+                    'lng' => +$empresa->direccion_lng
+                ]
+            ],
+            'categorias' => [],
+            'servicios' => [],
+            'vacantes' => $empresa->vacantes,
+            'horario' => [
+                'inicio' => $empresa->horario_inicio,
+                'fin' => $empresa->horario_fin
+            ]
+        ];
+
+        return response()->json($empresaTransformada);
     }
 
     /**
