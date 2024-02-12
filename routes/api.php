@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\RolesUsuariosController;
 use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Resources\UsuarioResource;
 use App\Models\Usuario;
+use App\Http\Controllers\Api\ResenaController;
+use App\Http\Controllers\Api\ResenaRespuestaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,8 @@ Route::apiResource('roles', RolesUsuariosController::class);
 
 // Centros.
 Route::apiResource('centros', CentroController::class);
+
+
 
 
 //Reseña
