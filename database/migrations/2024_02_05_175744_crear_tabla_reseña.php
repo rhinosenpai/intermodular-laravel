@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('resena', function(Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->timestamp('fechaRespuesta')->nullable();
             $table->timestamps();
         });
     }
