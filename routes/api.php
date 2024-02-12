@@ -40,6 +40,11 @@ Route::get('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@show');
 
 Route::apiResource('preguntas', PreguntaController::class);
 
+
+Route::get('/empresas', 'App\Http\Controllers\Api\EmpresaController@index');
+Route::get('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@show');
+
+
 // Usuarios.
 Route::apiResource('usuarios', UsuarioController::class);
 Route::post('login', [LoginController::class, 'login']);
