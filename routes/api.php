@@ -26,11 +26,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 */
 
-Route::get('/centros', 'App\Http\Controllers\Api\CentroController@index'); //mostrar todos los registros de centros
-Route::get('/centros/{id}', 'App\Http\Controllers\Api\CentroController@show'); //mostrar un registro especifico
-Route::post('/centros', 'App\Http\Controllers\Api\CentroController@store'); //crear un registro
-Route::put('/centros/{id}', 'App\Http\Controllers\Api\CentroController@update'); //actualizar un registro
-Route::delete('/centros/{id}', 'App\Http\Controllers\Api\CentroController@destroy'); //eliminar un registro
+Route::get('/centros', 'App\Http\Controllers\Api\CentroController@index');
+Route::get('/centros/{id}', 'App\Http\Controllers\Api\CentroController@show');
+Route::post('/centros', 'App\Http\Controllers\Api\CentroController@store');
+Route::put('/centros/{id}', 'App\Http\Controllers\Api\CentroController@update');
+Route::delete('/centros/{id}', 'App\Http\Controllers\Api\CentroController@destroy');
+
+Route::get('/empresas', 'App\Http\Controllers\Api\EmpresaController@index');
+Route::get('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@show');
+
 Route::apiResource('preguntas', PreguntaController::class);
 
 // Usuarios.
