@@ -15,16 +15,19 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('imagen');
+            $table->integer('nota');
+            $table->string('cif');
+            $table->string('descripcion');
             $table->string('telefono');
-            $table->string('correo');
-            $table->string('direccion_calle');
-            $table->string('direccion_provincia');
-            $table->string('direccion_localidad');
-            $table->string('direccion_lat');
-            $table->string('direccion_lng');
+            $table->string('email');
+            $table->string('direccion');
+            $table->string('provincia');
+            $table->string('localidad');
+            $table->string('lat');
+            $table->string('lng');
             $table->integer('vacantes');
-            $table->time('horario_inicio');
-            $table->time('horario_fin');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->timestamps();
         });
     }
@@ -34,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('empresas');
+        Schema::dropIfExists('table_empresas');
     }
 };

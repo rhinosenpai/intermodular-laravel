@@ -27,16 +27,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 */
 
-/*
+//Centros.
 Route::get('/centros', 'App\Http\Controllers\Api\CentroController@index');
 Route::get('/centros/{id}', 'App\Http\Controllers\Api\CentroController@show');
 Route::post('/centros', 'App\Http\Controllers\Api\CentroController@store');
 Route::put('/centros/{id}', 'App\Http\Controllers\Api\CentroController@update');
 Route::delete('/centros/{id}', 'App\Http\Controllers\Api\CentroController@destroy');
-*/
 
+//Empresas.
 Route::get('/empresas', 'App\Http\Controllers\Api\EmpresaController@index');
 Route::get('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@show');
+Route::post('/empresas', 'App\Http\Controllers\Api\EmpresaController@store');
+Route::put('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@update');
+Route::delete('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@destroy');
 
 Route::apiResource('preguntas', PreguntaController::class);
 
@@ -46,4 +49,4 @@ Route::post('login', [LoginController::class, 'login']);
 Route::apiResource('roles', RolesUsuariosController::class);
 
 // Centros.
-Route::apiResource('centros', CentroController::class);
+//Route::apiResource('centros', CentroController::class);
