@@ -21,4 +21,9 @@ class Resena extends Model
     {
         return $this->hasMany(Resena_Respuesta::class);
     }
+
+    public function centrosEmpresas()
+    {
+        return $this->hasOne();
+    }
 }
