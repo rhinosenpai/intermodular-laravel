@@ -20,3 +20,5 @@ Route::get('/', function () {
 });
 
 Route::get('centros', [CentroController::class, 'index']);
+
+

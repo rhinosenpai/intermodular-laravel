@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resena', function(Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->timestamp('fechaRespuesta')->nullable();
-            $table->timestamps();
+        Schema::table('resena', function (Blueprint $table) {
+            $table->unsignedBigInteger('formulario_id');
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resena');
+        Schema::table('resena', function (Blueprint $table) {
+            $table->dropColumn('formulario_id');
+        });
     }
 };

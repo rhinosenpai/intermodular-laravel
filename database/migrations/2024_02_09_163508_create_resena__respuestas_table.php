@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('token', function(Blueprint $table) {
-            $table->string('token');
+        Schema::create('resena_respuestas', function (Blueprint $table) {
+            $table->id();
+            $table->string('pregunta_id');
+            $table->string('valor');
+            $table->timestamps();
         });
     }
 
@@ -21,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('token');
+        Schema::dropIfExists('resena__respuestas');
     }
 };

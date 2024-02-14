@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CentroResource;
 use App\Models\Centro;
 use App\Models\Rol;
 use App\Models\Usuario;
@@ -15,8 +16,7 @@ class CentroController extends Controller
      */
     public function index()
     {
-        $centros = Centro::all();
-        return response()->json($centros);
+        return CentroResource::collection(Centro::all());
     }
 
     /**

@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\RolesUsuariosController;
 use App\Http\Controllers\Api\UsuarioController;
 use App\Http\Resources\UsuarioResource;
 use App\Models\Usuario;
+use App\Http\Controllers\Api\ResenaController;
+use App\Http\Controllers\Api\ResenaRespuestaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,12 +43,11 @@ Route::post('/empresas', 'App\Http\Controllers\Api\EmpresaController@store');
 Route::put('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@update');
 Route::delete('/empresas/{id}', 'App\Http\Controllers\Api\EmpresaController@destroy');
 
-Route::apiResource('preguntas', PreguntaController::class);
 
 // Usuarios.
 Route::apiResource('usuarios', UsuarioController::class);
 Route::post('login', [LoginController::class, 'login']);
 Route::apiResource('roles', RolesUsuariosController::class);
 
-// Centros.
-//Route::apiResource('centros', CentroController::class);
+Route::apiResource('resena', ResenaController::class);
+Route::apiResource('respuestas', ResenaRespuestaController::class)->except(['update']);
