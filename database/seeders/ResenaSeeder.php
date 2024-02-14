@@ -17,7 +17,8 @@ class ResenaSeeder extends Seeder
         $forms = Formulario_Pregunta::select('formulario_id')->distinct()->get();
         $forms->each(function($form)
         {
-            Resena::factory()->count(5)->create(['formulario_id' => $form->formulario_id]);
+            Resena::factory()->count(5)->create(['formulario_id' => $form->formulario_id,'centroempresa_id' => 1]);
+            
         });
     }
 }
