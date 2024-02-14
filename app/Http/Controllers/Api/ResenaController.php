@@ -7,6 +7,7 @@ use App\Models\Resena;
 use Illuminate\Http\Request;
 use App\Models\Formulario_Pregunta;
 use App\Models\Pregunta;
+use App\Models\Formulario;
 
 class ResenaController extends Controller
 {
@@ -40,11 +41,16 @@ class ResenaController extends Controller
     public function show(Resena $resena)
     {
         $preguntas = [];
-        foreach($resena->respuestas as $respuestas){
-            $preguntas[Pregunta::findOrFail($respuestas->pregunta_id)->titulo]= $respuestas->valor;
+        $formulario = Formulario::findOrFail($resena->formulario_id)->preguntas;
+        foreach($formulario as $respuestas){ 
+            $preguntas[]= $respuestas->titulo;
         }
-        return response()->json([
+
+    
+        
+    return response()->json([
             "id" => $resena->id,
+            "formulario_id" => $resena->formulario_id,
             "preguntas"=>$preguntas
         ], 200);
     }
