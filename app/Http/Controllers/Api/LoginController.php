@@ -19,7 +19,9 @@ class LoginController extends Controller
             return response()->json([
                 'accessToken' => $usuario->createToken($usuario->login)->plainTextToken,
                 'login' => $usuario->login,
-                'roles' => $roles
+                'roles' => $roles,
+                'id_centro' => $usuario->id_centro,
+                'id_empresa' => $usuario->id_empresa
             ]);
         }
     }
