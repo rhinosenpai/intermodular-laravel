@@ -9,11 +9,15 @@ use App\Models\Empresa;
 use App\Models\Rol;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {
     public function __construct() {
-        //$this->middleware(['auth', 'roles:centro']);
+        $this->middleware(['auth:sanctum']);
+        $this->middleware(['roles:tutor,centro,empresa,admin'], ['except' => ['store', 'update', 'destroy']]);
+        $this->middleware(['roles:centro,admin'], ['only' => ['store', 'update', 'destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -35,7 +39,7 @@ class UsuarioController extends Controller
         if ($rol) {
             $usuario->login = $request->login;
             $usuario->name = $request->name;
-            $usuario->password = $request->password;
+            $usuario->password = Hash::make($request->password);
             $usuario->dni = $request->dni;
             $usuario->telefono = $request->telefono;
             $usuario->token = $request->token;
