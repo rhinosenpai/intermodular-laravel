@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class CentroController extends Controller
 {
+    public function __construct() {
+        $this->middleware(['auth:sanctum']);
+        $this->middleware(['roles:tutor,centro,empresa,admin'], ['except' => ['store', 'update', 'destroy']]);
+        $this->middleware(['roles:centro,admin'], ['only' => ['store', 'update', 'destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */
