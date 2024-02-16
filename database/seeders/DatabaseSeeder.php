@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             UsuariosSeeder::class,
             FormularioSeeder::class,
             PreguntaSeeder::class,
-            Formulario_PreguntaSeeder::class,
             UsuariosSeeder::class,
             RolesSeeder::class,
             RolesUsuariosSeeder::class,
