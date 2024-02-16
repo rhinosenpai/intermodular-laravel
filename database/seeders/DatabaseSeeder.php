@@ -29,7 +29,9 @@ class DatabaseSeeder extends Seeder
             ServiciosSeeder::class,
             ServiciosCategoriasSeeder::class,
             ResenaSeeder::class,
-            Resena_RespuestaSeeder::class
+            Resena_RespuestaSeeder::class,
+            ProvinciasSeeder::class,
+            PoblacionesSeeder::class
         ]);
 
     }
