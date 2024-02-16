@@ -36,8 +36,8 @@ class EmpresaController extends Controller
                 ],
                 'vacantes' => $empresa->vacantes,
                 'horario' => [
-                    'inicio' => $empresa->hora_inicio,
-                    'fin' => $empresa->hora_fin
+                    'inicio' => substr($empresa->hora_inicio, 0, -3),
+                    'fin' => substr($empresa->hora_fin, 0, -3)
                 ],
                 'categorias' => [],
                 'servicios' => [],
@@ -110,8 +110,8 @@ class EmpresaController extends Controller
             ],
             'vacantes' => $empresa->vacantes,
             'horario' => [
-                'inicio' => $empresa->hora_inicio,
-                'fin' => $empresa->hora_fin
+                'inicio' => substr($empresa->hora_inicio, 0, -3),
+                'fin' => substr($empresa->hora_fin, 0, -3)
             ],
             'categorias' => [],
             'servicios' => [],
