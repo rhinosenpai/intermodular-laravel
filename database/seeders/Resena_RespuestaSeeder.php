@@ -17,9 +17,10 @@ class Resena_RespuestaSeeder extends Seeder
        $resenas = Resena::all();
         $resenas->each(function($resena)
         {
-            $resena->formularios->each(function($r) use ($resena)
+            $resena->formularios->preguntas->each(function($r) use ($resena)
             {
-                Resena_Respuesta::factory()->count(1)->create(['pregunta_id' => $r->pregunta_id,'resena_id' =>$resena->id]);
+                Resena_Respuesta::factory()->count(1)->create(
+                    ['pregunta_id' => $r->id,'resena_id' =>$resena->id]);
             });
         });
     }
