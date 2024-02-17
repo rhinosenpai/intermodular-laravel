@@ -7,9 +7,6 @@ use App\Models\Resena;
 use Illuminate\Http\Request;
 use App\Models\Formulario_Pregunta;
 use App\Models\Pregunta;
-use App\Models\Formulario;
-use App\Models\CentroEmpresa;
-use Carbon\Carbon;
 
 class ResenaController extends Controller
 {
@@ -27,11 +24,9 @@ class ResenaController extends Controller
      */
     public function store(Request $request)
     {
-        $form = Formulario::findOrFail($request->formulario_id);
-        $centroemp = CentroEmpresa::findOrFail($request->centroempresa_id);
+        $form = Formulario_Pregunta::findOrFail($request->formulario_id);
         $resena = new Resena();
-        $resena->formularios()->associate($form);
-        $resena->centroEmpresas()->associate($centroemp);
+        $resena->formularios()->associate(Formulario_Pregunta::findOrFail($request->formulario_id)->formulario_id);
         $resena->save();
         
         
@@ -42,13 +37,8 @@ class ResenaController extends Controller
      * Display the specified resource.
      */
     public function show(Resena $resena)
-    {   
-    return response()->json([
-            "id" => $resena->id,
-            "formulario_id" => $resena->formulario_id,
-            "empresa_id" => $resena->centroEmpresas->empresa_id,
-            "preguntas"=>$resena->formularios->preguntas
-        ], 200);
+    {
+        return response()->json($resena, 200);
     }
 
     /**

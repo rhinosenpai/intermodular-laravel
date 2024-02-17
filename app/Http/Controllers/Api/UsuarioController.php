@@ -4,20 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UsuarioResource;
-use App\Models\Centro;
-use App\Models\Empresa;
 use App\Models\Rol;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 
 class UsuarioController extends Controller
 {
     public function __construct() {
-        $this->middleware(['auth:sanctum']);
-        $this->middleware(['roles:tutor,centro,empresa,admin'], ['except' => ['store', 'update', 'destroy']]);
-        $this->middleware(['roles:centro,admin'], ['only' => ['store', 'update', 'destroy']]);
+        //$this->middleware(['auth', 'roles:centro']);
     }
     /**
      * Display a listing of the resource.
@@ -35,11 +29,10 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
         $rol = Rol::where('tipo', $request->roles)->first();
 
-        // Rol es de tipo tutor.
         if ($rol) {
             $usuario->login = $request->login;
             $usuario->name = $request->name;
-            $usuario->password = Hash::make($request->password);
+            $usuario->password = $request->password;
             $usuario->dni = $request->dni;
             $usuario->telefono = $request->telefono;
             $usuario->token = $request->token;
@@ -47,14 +40,6 @@ class UsuarioController extends Controller
             $usuario->provincia = $request->provincia;
             $usuario->poblacion = $request->poblacion;
             $usuario->email = $request->email;
-            if ($request->id_centro) {
-                $centro = Centro::findOrFail($request->id_centro);
-                $usuario->centro()->associate($centro);
-            }
-            if ($request->id_empresa) {
-                $empresa = Empresa::findOrFail($request->id_empresa);
-                $usuario->empresa()->associate($empresa);
-            }
             $usuario->save();
             $usuario->roles()->attach($rol->id);
             return response()->json($usuario);
@@ -68,7 +53,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        return new UsuarioResource(Usuario::findOrFail($usuario->id));
+        return $usuario;
     }
 
     /**

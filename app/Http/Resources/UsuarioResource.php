@@ -21,8 +21,11 @@ class UsuarioResource extends JsonResource
             'dni' => $this->dni,
             'roles' => $this->roles()->pluck('tipo'),
             'email' => $this->email,
+<<<<<<< HEAD
             'centro' => $this->centro()->get(),
             'empresa' => $this->empresa()->get()
+=======
+>>>>>>> 30f95c7b06e529678c66f70ff8f372bd5c6efc6c
         ];
     }
 }

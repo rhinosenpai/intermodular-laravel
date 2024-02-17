@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
             UsuariosSeeder::class,
             FormularioSeeder::class,
             PreguntaSeeder::class,
+<<<<<<< HEAD
+=======
+            Formulario_PreguntaSeeder::class,
+>>>>>>> 30f95c7b06e529678c66f70ff8f372bd5c6efc6c
             UsuariosSeeder::class,
             RolesSeeder::class,
             RolesUsuariosSeeder::class,
@@ -28,9 +32,13 @@ class DatabaseSeeder extends Seeder
             ServiciosSeeder::class,
             ServiciosCategoriasSeeder::class,
             ResenaSeeder::class,
+<<<<<<< HEAD
             Resena_RespuestaSeeder::class,
             ProvinciasSeeder::class,
             PoblacionesSeeder::class
+=======
+            Resena_RespuestaSeeder::class
+>>>>>>> 30f95c7b06e529678c66f70ff8f372bd5c6efc6c
         ]);
 
     }
