@@ -14,11 +14,16 @@ class Resena extends Model
 
     public function formularios()
     {
-        return $this->hasMany(Formulario_Pregunta::class,'formulario_id','formulario_id');
+        return $this->belongsTo(Formulario::class,'formulario_id','id');
     }
 
     public function respuestas()
     {
         return $this->hasMany(Resena_Respuesta::class);
+    }
+
+    public function centroEmpresas()
+    {
+        return $this->hasOne(centroEmpresa::class, 'id','centroempresa_id');
     }
 }

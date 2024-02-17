@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\CentroController;
+use App\Http\Controllers\Api\CentroController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\FormularioController;
+use Spatie\FlareClient\Api;
 
 /*
 |--------------------------------------------------------------------------

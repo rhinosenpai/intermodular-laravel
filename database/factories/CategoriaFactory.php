@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Resena>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Categoria>
  */
-class ResenaFactory extends Factory
+class CategoriaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,8 @@ class ResenaFactory extends Factory
     public function definition(): array
     {
         return [
-            'formulario_id' => rand(1,2)
+            'nombre' => fake()->unique()->word(),
+            'descripcion' => fake()->text(10)
         ];
     }
 }

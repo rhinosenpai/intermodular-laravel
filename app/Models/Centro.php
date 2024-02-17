@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Empresa;
 
 class Centro extends Model
 {
@@ -13,5 +14,8 @@ class Centro extends Model
     public function empresas()
     {
         return $this->belongsToMany(Empresa::class, 'centro_empresa');
+    }
+    public function usuarios() {
+        return $this->hasMany(Usuario::class, 'id_centro');
     }
 }
