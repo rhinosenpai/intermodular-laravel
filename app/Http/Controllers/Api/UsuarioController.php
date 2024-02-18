@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\usuarioRequest;
 use App\Http\Resources\UsuarioResource;
 use App\Models\Rol;
 use App\Models\Usuario;
@@ -24,7 +25,7 @@ class UsuarioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(usuarioRequest $request)
     {
         $usuario = new Usuario();
         $rol = Rol::where('tipo', $request->roles)->first();

@@ -47,6 +47,7 @@ class CentroController extends Controller
         $centroUser->name = $request->nombre;
         $centroUser->login = $request->login;
         $centroUser->password = $request->password;
+        $centroUser->email = $request->email;
         $centroUser->centro()->associate($centro->id);
         $centroUser->save();
 
