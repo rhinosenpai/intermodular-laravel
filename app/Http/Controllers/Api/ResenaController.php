@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Formulario_Pregunta;
 use App\Models\Pregunta;
 use App\Models\Formulario;
+use App\Models\CentroEmpresa;
+use Carbon\Carbon;
 
 class ResenaController extends Controller
 {
@@ -16,7 +18,6 @@ class ResenaController extends Controller
      */
     public function index()
     {
-        //devuelve el token de las reseñas
         $resena = Resena::get();
         return response()->json($resena, 200);
     }
@@ -26,9 +27,11 @@ class ResenaController extends Controller
      */
     public function store(Request $request)
     {
-        $form = Formulario_Pregunta::findOrFail($request->formulario_id);
+        $form = Formulario::findOrFail($request->formulario_id);
+        $centroemp = CentroEmpresa::findOrFail($request->centroempresa_id);
         $resena = new Resena();
-        $resena->formularios()->associate(Formulario_Pregunta::findOrFail($request->formulario_id)->formulario_id);
+        $resena->formularios()->associate($form);
+        $resena->centroEmpresas()->associate($centroemp);
         $resena->save();
         
         
@@ -39,19 +42,12 @@ class ResenaController extends Controller
      * Display the specified resource.
      */
     public function show(Resena $resena)
-    {
-        $preguntas = [];
-        $formulario = Formulario::findOrFail($resena->formulario_id)->preguntas;
-        foreach($formulario as $respuestas){ 
-            $preguntas[]= $respuestas->titulo;
-        }
-
-    
-        
+    {   
     return response()->json([
             "id" => $resena->id,
             "formulario_id" => $resena->formulario_id,
-            "preguntas"=>$preguntas
+            "empresa_id" => $resena->centroEmpresas->empresa_id,
+            "preguntas"=>$resena->formularios->preguntas
         ], 200);
     }
 
@@ -60,7 +56,7 @@ class ResenaController extends Controller
      */
     public function update(Request $request, Resena $resena)
     {
-        $resena->fechaRespuesta = $request->fechaRespuesta;
+        $resena->fechaRespuesta = Carbon::now();
         return response()->json($resena,200);
     }
 
