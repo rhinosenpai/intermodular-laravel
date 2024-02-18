@@ -17,7 +17,6 @@ class RolCheck
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        Log::warning('Ejecutando Handler real!');
         if (auth()->user()) {
             $rolesUsuario = auth()->user()->roles->pluck('tipo');
             foreach($roles as $rol) {
