@@ -24,6 +24,6 @@ class Resena extends Model
 
     public function centroEmpresas()
     {
-        return $this->hasOne(centroEmpresa::class, 'id','centroempresa_id');
+        return $this->belongsTo(CentroEmpresa::class, 'centroempresa_id', 'id');
     }
 }
