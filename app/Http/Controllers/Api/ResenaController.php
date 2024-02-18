@@ -36,7 +36,7 @@ class ResenaController extends Controller
             $resena->save();
             return response()->json($resena, 201);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $ex) {
-            return response()->json(['error' => 'Recurso no encontrado'], 404);
+            return response()->json(['error' => 'No se ha podido crear el formulario.'], 404);
         }
     }
 
