@@ -14,11 +14,7 @@ class Resena extends Model
 
     public function formularios()
     {
-<<<<<<< HEAD
         return $this->belongsTo(Formulario::class,'formulario_id','id');
-=======
-        return $this->belongsTo(Formulario_Pregunta::class,'formulario_id');
->>>>>>> 30f95c7b06e529678c66f70ff8f372bd5c6efc6c
     }
 
     public function respuestas()
@@ -26,7 +22,6 @@ class Resena extends Model
         return $this->hasMany(Resena_Respuesta::class);
     }
 
-<<<<<<< HEAD
     public function centroEmpresas()
     {
         return $this->belongsTo(CentroEmpresa::class, 'centroempresa_id', 'id');
