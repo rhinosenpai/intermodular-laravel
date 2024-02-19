@@ -9,6 +9,7 @@ use App\Models\Formulario_Pregunta;
 use App\Models\Pregunta;
 use App\Models\Formulario;
 use App\Models\CentroEmpresa;
+use App\Models\Empresa;
 use Carbon\Carbon;
 
 class ResenaController extends Controller
@@ -45,11 +46,44 @@ class ResenaController extends Controller
      */
     public function show(Resena $resena)
     {   
+        $empresa =Empresa::findOrFail($resena->centroEmpresas->empresa_id);
+        if ($empresa === 0) {
+            return response()->json(['error' => 'No se pudo encontrar la empresa'], 404);
+        }
+
+        $empresaTransformada = [
+            'id' => $empresa->id,
+            'nombre' => $empresa->nombre,
+            'imagen' => $empresa->imagen,
+            'nota' => $empresa->nota,
+            'cif' => $empresa->cif,
+            'descripcion' => $empresa->descripcion,
+            'telefono' => $empresa->telefono,
+            'email' => $empresa->email,
+            'ubicacion' => [
+                'direccion' => $empresa->direccion,
+                'provincia' => $empresa->provincia,
+                'localidad' => $empresa->localidad,
+                'coordenadas' => [
+                    'lat' => +$empresa->lat,
+                    'lng' => +$empresa->lng
+                ]
+            ],
+            'vacantes' => $empresa->vacantes,
+            'horario' => [
+                'inicio' => substr($empresa->hora_inicio, 0, -3),
+                'fin' => substr($empresa->hora_fin, 0, -3)
+            ],
+            'categorias' => [],
+            'servicios' => [],
+        ];
+
     return response()->json([
             "id" => $resena->id,
             "formulario_id" => $resena->formulario_id,
-            "empresa_id" => $resena->centroEmpresas->empresa_id,
-            "preguntas"=>$resena->formularios->preguntas
+            "empresa" => $empresaTransformada,
+            "preguntas"=>$resena->formularios->preguntas,
+            "a"=>77
         ], 200);
     }
 

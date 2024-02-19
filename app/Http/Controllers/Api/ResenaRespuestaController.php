@@ -23,12 +23,12 @@ class ResenaRespuestaController extends Controller
      */
     public function store(Request $request)
     {
-        foreach ($request->preguntas as $respuestas){
+        foreach ($request->preguntas as $pregunta => $respuestas){
             $respuesta = new Resena_Respuesta();
             $respuesta->resena()->associate(Resena::findOrFail($request->id)->id);
             
-            $respuesta->valor = $respuestas["respuesta"];
-            $respuesta->pregunta_id = $respuestas["pregunta_id"];
+            $respuesta->valor = $respuestas;
+            $respuesta->pregunta_id = $pregunta;
             $respuesta->save();
         }
         return response()->json($respuesta,201);
