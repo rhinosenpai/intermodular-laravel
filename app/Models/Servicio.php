@@ -12,6 +12,6 @@ class Servicio extends Model
     protected $table = 'servicios';
 
     public function categorias() {
-        return $this->belongsToMany(Categoria::class);
+        return $this->belongsToMany(Categoria::class, 'servicios_categorias');
     }
 }
