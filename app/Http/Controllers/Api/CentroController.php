@@ -65,8 +65,7 @@ class CentroController extends Controller
      */
     public function show(Request $request)
     {
-        $centro = Centro::findOrFail($request->id);
-        return $centro;
+        return new CentroResource(Centro::findOrFail($request->id));
     }
 
     /**
@@ -83,6 +82,7 @@ class CentroController extends Controller
     public function update(Request $request, string $id)
     {
         $centro = Centro::findOrFail($request->id);
+        $usuario = Usuario::where('id_centro', $request->id)->first();
         $centro->nombre = $request->nombre;
         $centro->email = $request->email;
         $centro->password = $request->password;
@@ -91,7 +91,12 @@ class CentroController extends Controller
         $centro->poblacion = $request->poblacion;
         $centro->provincia = $request->provincia;
 
+        $usuario->password = $request->password;
+        $usuario->name = $request->nombre;
+        $usuario->login = $request->login;
+
         $centro->save();
+        $usuario->save();
 
         return $centro;
     }

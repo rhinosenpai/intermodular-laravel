@@ -22,6 +22,7 @@ class CentroResource extends JsonResource
             'telefono' => $this->telefono,
             'poblacion' => $this->poblacion,
             'provincia' => $this->provincia,
+            'password' => $this->password,
             'usuarios' => $this->usuarios()->get()->map(function($usuario) {
                 return [
                     'id' => $usuario->id,
@@ -29,7 +30,8 @@ class CentroResource extends JsonResource
                     'nombre' => $usuario->name,
                     'email' => $usuario->email,
                     'dni' => $usuario->dni,
-                    'roles' => $usuario->roles()->pluck('tipo')
+                    'roles' => $usuario->roles()->pluck('tipo'),
+                    'login' => $usuario->login
                 ];
             })
         ];
