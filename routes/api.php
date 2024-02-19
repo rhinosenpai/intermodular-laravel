@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CategoriasController;
 use App\Http\Controllers\Api\CentroController;
 use App\Http\Controllers\Api\LoginController;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use App\Http\Resources\UsuarioResource;
 use App\Models\Usuario;
 use App\Http\Controllers\Api\ResenaController;
 use App\Http\Controllers\Api\ResenaRespuestaController;
+use App\Http\Controllers\CategoriaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,9 @@ Route::apiResource('roles', RolesUsuariosController::class);
 
 // Provincias.
 Route::get('provincias', [ProvinciasController::class, 'index']);
+
+// Categorías.
+Route::apiResource('categorias', CategoriasController::class);
 
 Route::apiResource('resena', ResenaController::class);
 Route::apiResource('respuestas', ResenaRespuestaController::class)->except(['update']);
