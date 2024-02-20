@@ -49,6 +49,7 @@ class CategoriasController extends Controller
     {
         $categoria->nombre = $request->nombre;
         $categoria->descripcion = $request->descripcion;
+        $categoria->servicios()->sync($request->serviciosIds);
         $categoria->save();
         return $categoria;
     }

@@ -13,6 +13,7 @@ use App\Http\Resources\UsuarioResource;
 use App\Models\Usuario;
 use App\Http\Controllers\Api\ResenaController;
 use App\Http\Controllers\Api\ResenaRespuestaController;
+use App\Http\Controllers\Api\ServicioController;
 use App\Http\Controllers\CategoriaController;
 
 /*
@@ -55,8 +56,9 @@ Route::apiResource('roles', RolesUsuariosController::class);
 // Provincias.
 Route::get('provincias', [ProvinciasController::class, 'index']);
 
-// Categorías.
+// Categorías y servicios.
 Route::apiResource('categorias', CategoriasController::class);
+Route::apiResource('servicios', ServicioController::class);
 
 Route::apiResource('resena', ResenaController::class);
 Route::apiResource('respuestas', ResenaRespuestaController::class)->except(['update']);
